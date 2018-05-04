@@ -1,0 +1,9 @@
+
+#Create Policy
+	aws iam create-policy --policy-name ReadOnly --policy-document file://readaccountsPolicyProd.json --profile <profile>
+
+# Create Role
+	aws iam create-role --role-name CrossAccountReader --assume-role-policy-document file://CCATrustPolicyProd.json --profile <profile>
+
+# Attach readonly Policy
+	aws iam attach-role-policy --policy-arn arn:aws:iam::<Account Number>:policy/ReadOnly --role-name CrossAccountReader --profile <profile>

@@ -1,0 +1,8 @@
+# create policy
+aws iam create-policy --policy-name ReadOnly --policy-document file://readaccountsPolicy.json --profile <profile>
+
+# Create Role
+aws iam create-role --role-name CrossAccountReader --assume-role-policy-document file://CCATrustPolicy.json --profile <profile>
+
+# Attach readonly Policy
+aws iam attach-role-policy --policy-arn arn:aws:iam::<account number>:policy/ReadOnly --role-name CrossAccountReader --profile <profile>
